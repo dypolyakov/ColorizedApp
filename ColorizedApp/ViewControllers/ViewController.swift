@@ -22,10 +22,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupColor()
+        setupLabelValues()
         colorView.layer.cornerRadius = 10
     }
 
     // MARK: - IB Actions
+    
+    
     @IBAction func redSliderAction() {
         redValueLabel.text = String(format: "%.2f", redSlider.value)
         setupColor()
@@ -50,6 +54,12 @@ class ViewController: UIViewController {
             alpha: 1.0
         )
         colorView.backgroundColor = UIColor(cgColor: color)
+    }
+    
+    private func setupLabelValues() {
+        redValueLabel.text = String(format: "%.2f", redSlider.value)
+        greenValueLabel.text = String(format: "%.2f", greenSlider.value)
+        blueValueLabel.text = String(format: "%.2f", blueSlider.value)
     }
 }
 
