@@ -28,7 +28,7 @@ final class SettingsViewController: UIViewController {
     
     
     // MARK: - Public Properties
-    var backgroundColor: UIColor?
+    var backgroundColor: UIColor!
     var delegate: SettingsViewControllerDelegate!
     
     // MARK: - Override Methods
@@ -43,6 +43,10 @@ final class SettingsViewController: UIViewController {
         setValue(for: redSlider, greenSlider, blueSlider)
         setValue(for: redLabel, greenLabel, blueLabel)
         setValue(for: redTextField, greenTextField, blueTextField)
+        
+        redTextField.delegate = self
+        greenTextField.delegate = self
+        blueTextField.delegate = self
         
     }
 
@@ -65,6 +69,8 @@ final class SettingsViewController: UIViewController {
     }
     
     @IBAction func DoneButtonAction() {
+        view.endEditing(true)
+        
         delegate.setColor(color: colorView.backgroundColor
                           ?? UIColor(
                             red: 1,
@@ -72,6 +78,7 @@ final class SettingsViewController: UIViewController {
                             blue: 1,
                             alpha: 1)
         )
+        
         dismiss(animated: true)
     }
     
@@ -113,12 +120,7 @@ final class SettingsViewController: UIViewController {
     }
     
     private func setValue(for sliders: UISlider...) {
-        let ciColor = CIColor(color: backgroundColor
-                              ?? UIColor(
-                                red: 1,
-                                green: 1,
-                                blue: 1,
-                                alpha: 1))
+        let ciColor = CIColor(color: backgroundColor)
         sliders.forEach { slider in
             switch slider {
             case redSlider:
@@ -137,3 +139,25 @@ final class SettingsViewController: UIViewController {
     }
 }
 
+// MARK: - UITextFieldDelegate
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        
+        guard let textFieldText = textField.text else { return }
+        guard let numberValue = Float(textFieldText) else { return }
+        
+        switch textField {
+        case redTextField:
+            redSlider.setValue(numberValue, animated: true)
+        case greenTextField:
+            greenSlider.setValue(numberValue, animated: true)
+        default:
+            blueSlider.setValue(numberValue, animated: true)
+        }
+        
+        setColor()
+        setValue(for: redLabel, greenLabel, blueLabel)
+        
+    }
+}

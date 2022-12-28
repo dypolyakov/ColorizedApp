@@ -40,14 +40,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="o9A-LH-ESf">
-                                <rect key="frame" x="16" y="0.0" width="343" height="497.5"/>
+                                <rect key="frame" x="16" y="0.0" width="343" height="364"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v4N-o6-PQK">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="333.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="200"/>
                                         <color key="backgroundColor" systemColor="systemGrayColor"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="l84-Jj-Cvo">
-                                        <rect key="frame" x="0.0" y="363.5" width="343" height="134"/>
+                                        <rect key="frame" x="0.0" y="230" width="343" height="134"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="aSy-k6-WfP">
                                                 <rect key="frame" x="0.0" y="0.0" width="51" height="134"/>
@@ -172,7 +172,7 @@
                             <constraint firstItem="o9A-LH-ESf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xjn-Il-3KH"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UV2-lU-zSM" secondAttribute="bottom" constant="20" id="YV8-ML-Dm0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o9A-LH-ESf" secondAttribute="trailing" constant="16" id="lqn-u5-jVm"/>
-                            <constraint firstItem="v4N-o6-PQK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="oT4-sl-YEB"/>
+                            <constraint firstItem="v4N-o6-PQK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="oT4-sl-YEB"/>
                             <constraint firstItem="UV2-lU-zSM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="okS-0M-qmH"/>
                         </constraints>
                     </view>
