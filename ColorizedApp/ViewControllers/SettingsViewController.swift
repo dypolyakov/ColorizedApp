@@ -7,7 +7,9 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+// MARK: - SettingsViewController
+
+final class SettingsViewController: UIViewController {
 
     // MARK: - IB Outlets
     @IBOutlet var colorView: UIView!
@@ -27,17 +29,21 @@ class SettingsViewController: UIViewController {
     
     // MARK: - Public Properties
     var backgroundColor: UIColor?
+    var delegate: SettingsViewControllerDelegate!
+    
+    // MARK: - Override Methods
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         colorView.layer.cornerRadius = 10
+        colorView.backgroundColor = backgroundColor
         
-        setColor()
-
+        setValue(for: redSlider, greenSlider, blueSlider)
         setValue(for: redLabel, greenLabel, blueLabel)
         setValue(for: redTextField, greenTextField, blueTextField)
+        
     }
 
     // MARK: - IB Actions
@@ -58,8 +64,19 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func DoneButtonAction() {
+        delegate.setColor(color: colorView.backgroundColor
+                          ?? UIColor(
+                            red: 1,
+                            green: 1,
+                            blue: 1,
+                            alpha: 1)
+        )
+        dismiss(animated: true)
+    }
     
     // MARK: - Private Methods
+    
     private func setColor() {
         colorView.backgroundColor = UIColor(
             red: CGFloat(redSlider.value),
@@ -94,6 +111,26 @@ class SettingsViewController: UIViewController {
             }
         }
     }
+    
+    private func setValue(for sliders: UISlider...) {
+        let ciColor = CIColor(color: backgroundColor
+                              ?? UIColor(
+                                red: 1,
+                                green: 1,
+                                blue: 1,
+                                alpha: 1))
+        sliders.forEach { slider in
+            switch slider {
+            case redSlider:
+                redSlider.value = Float(ciColor.red)
+            case greenSlider:
+                greenSlider.value = Float(ciColor.green)
+            default:
+                blueSlider.value = Float(ciColor.blue)
+            }
+        }
+    }
+    
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)

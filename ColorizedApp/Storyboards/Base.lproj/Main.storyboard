@@ -154,14 +154,26 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UV2-lU-zSM">
+                                <rect key="frame" x="154" y="600" width="67" height="47"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="DoneButtonAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="GHS-aA-f2V"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBlueColor"/>
                         <constraints>
                             <constraint firstItem="o9A-LH-ESf" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="6VK-x5-hi1"/>
                             <constraint firstItem="o9A-LH-ESf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xjn-Il-3KH"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UV2-lU-zSM" secondAttribute="bottom" constant="20" id="YV8-ML-Dm0"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="o9A-LH-ESf" secondAttribute="trailing" constant="16" id="lqn-u5-jVm"/>
                             <constraint firstItem="v4N-o6-PQK" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="oT4-sl-YEB"/>
+                            <constraint firstItem="UV2-lU-zSM" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="okS-0M-qmH"/>
                         </constraints>
                     </view>
                     <connections>
