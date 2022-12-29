@@ -47,10 +47,6 @@ final class SettingsViewController: UIViewController {
         redTextField.delegate = self
         greenTextField.delegate = self
         blueTextField.delegate = self
-        
-        setKeyboardType(.decimalPad, for: redTextField, greenTextField, blueTextField)
-        
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -144,12 +140,6 @@ final class SettingsViewController: UIViewController {
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
-    }
-    
-    private func setKeyboardType(_ keyboardType: UIKeyboardType, for textFields: UITextField...) {
-        textFields.forEach { textField in
-            textField.keyboardType = keyboardType
-        }
     }
 }
 
