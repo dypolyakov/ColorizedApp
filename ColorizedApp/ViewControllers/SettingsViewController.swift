@@ -40,6 +40,8 @@ final class SettingsViewController: UIViewController {
         colorView.layer.cornerRadius = 10
         colorView.backgroundColor = backgroundColor
         
+        setToolbar(for: redTextField, greenTextField, blueTextField)
+        
         setValue(for: redSlider, greenSlider, blueSlider)
         setValue(for: redLabel, greenLabel, blueLabel)
         setValue(for: redTextField, greenTextField, blueTextField)
@@ -140,6 +142,27 @@ final class SettingsViewController: UIViewController {
     
     private func string(from slider: UISlider) -> String {
         String(format: "%.2f", slider.value)
+    }
+    
+    func setToolbar(for textFields: UITextField...) {
+        let toolbar = UIToolbar()
+        let done = UIBarButtonItem(
+            title: "Done",
+            style: .done,
+            target: self,
+            action: #selector(doneTapped)
+        )
+        
+        toolbar.items = [done]
+        toolbar.sizeToFit()
+        
+        textFields.forEach { textField in
+            textField.inputAccessoryView = toolbar
+        }
+    }
+    
+    @objc private func doneTapped() {
+        view.endEditing(true)
     }
 }
 
