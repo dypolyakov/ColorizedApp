@@ -32,8 +32,6 @@ final class SettingsViewController: UIViewController {
     var delegate: SettingsViewControllerDelegate!
     
     // MARK: - Override Methods
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +55,6 @@ final class SettingsViewController: UIViewController {
     }
 
     // MARK: - IB Actions
-    
     @IBAction func sliderAction(_ sender: UISlider) {
         setColor()
         
@@ -74,7 +71,7 @@ final class SettingsViewController: UIViewController {
         }
     }
     
-    @IBAction func DoneButtonAction() {
+    @IBAction func doneButtonAction() {
         view.endEditing(true)
         
         delegate.setColor(color: colorView.backgroundColor
@@ -144,7 +141,7 @@ final class SettingsViewController: UIViewController {
         String(format: "%.2f", slider.value)
     }
     
-    func setToolbar(for textFields: UITextField...) {
+    private func setToolbar(for textFields: UITextField...) {
         let toolbar = UIToolbar()
         let done = UIBarButtonItem(
             title: "Done",
@@ -153,7 +150,13 @@ final class SettingsViewController: UIViewController {
             action: #selector(doneTapped)
         )
         
-        toolbar.items = [done]
+        let flexBarButton = UIBarButtonItem(
+            barButtonSystemItem: .flexibleSpace,
+            target: nil,
+            action: nil
+        )
+        
+        toolbar.items = [flexBarButton, done]
         toolbar.sizeToFit()
         
         textFields.forEach { textField in
@@ -169,6 +172,7 @@ final class SettingsViewController: UIViewController {
 // MARK: - UITextFieldDelegate
 
 extension SettingsViewController: UITextFieldDelegate {
+    
     func textFieldDidEndEditing(_ textField: UITextField) {
         
         guard let textFieldText = textField.text else { return }
